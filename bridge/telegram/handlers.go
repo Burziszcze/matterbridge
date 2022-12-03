@@ -451,11 +451,9 @@ func (b *Btelegram) handleUploadFile(msg *config.Message, chatid int64, parentID
 			Name:  fi.Name,
 			Bytes: *fi.Data,
 		}
-
-		if b.GetString("MessageFormat") == HTMLFormat {
+		if b.GetString("MessageFormat") == HTMLNick {
 			fi.Comment = makeHTML(html.EscapeString(fi.Comment))
 		}
-
 		switch filepath.Ext(fi.Name) {
 		case ".jpg", ".jpe", ".png":
 			pc := tgbotapi.NewInputMediaPhoto(file)
